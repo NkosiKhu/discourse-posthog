@@ -58,7 +58,9 @@
         }
         api.container.lookup('store:main').find('user', currentUser.username).then((user) => {
             const userId = settings.track_by_external_id && user.external_id ? user.external_id : user.id;
-            if (settings.include_user_email) {
+            if(settings.identify_on_user_email){
+                posthog.identify(user.email)
+            }else if (settings.include_user_email) {
                 posthog.identify(userId, { email: user.email })
             } else {
                 posthog.identify(userId)
