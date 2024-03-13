@@ -52,11 +52,7 @@
 
 
     function loaded() {
-        if(settings.do_not_record_screen){
-            posthog.stopSessionRecording()
-        }else{
-            posthog.startSessionRecording()
-        }
+        
         const currentUser = api.getCurrentUser()
         if (!settings.track_users || !currentUser) {
             return
@@ -166,7 +162,7 @@
     // Initiate Posthog.
     posthog.init(settings.posthog_write_key, {
         api_host: 'https://'+settings.posthog_api_host,
-        disable_session_recording: true,
+        disable_session_recording: settings.do_not_record_screen,
         autocapture: false,
         capture_pageview: false,
         loaded,
