@@ -19,6 +19,9 @@ identify_on_user_email:
 track_page:
   default: false
   description: "Track page visits by page type (tracks the latest, categories, category, tags, and topic pages)"
+do_not_record_screen:
+  default: false
+  description: "Turn off screen recording"
 track_topic_creation:
   default: false
   description: "Track topic creation"
